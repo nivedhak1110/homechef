@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer DashBoard</title>
+    <style>
+#chefdetails {
+  font-family: Ubuntu', sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#chefdetails td, #chefdetails th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#chefdetails tr:nth-child(even){background-color: #f2f2f2;}
+
+#chefdetails tr:hover {background-color: #ddd;}
+
+#chefdetails th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #DC143C;
+  color: white;
+}
+</style>
+
+
+</head>
+<body>
+<center>
+<h2>Customer Dashboard </h2>
+<p> Need to design<p>
+    <table id="chefdetails">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>chefname</th>
+            <th>Date</th>
+            <th>Dish</th>
+            <th>Cost</th>
+            <th>Availability</th>
+            <th>Available time</th>
+            <th>Location</th>
+
+        </tr>
+        </thead>
+
+
+        <tbody>
+            {% for row in value %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[7]}}</td>
+
+
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</center>
+
+</body>
+</html>

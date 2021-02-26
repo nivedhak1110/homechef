@@ -1,0 +1,26 @@
+PYTHON BASIC.  
+=============
+Topics covered : Variables, Function, std I/O, for loop /while, break , continue
+  
+1. write simple python program that prints 0 to 15 numbers
+2. write simple python program that prints  only even numbers from 0 to 15.
+3. write python program to print 0 to 15 numbers.(skip 7 and 9 numbers. it should not print)
+4. python program to save 0 to 15 numbers in array.
+5. use the same program, but create new method to print all the elements in the array. 
+6. Write a simple python program to get User details: ex  username, password , email-id, phone number.
+   print it in console. 
+   use 2 methods:
+   - read_user_input()
+   - print_user_details()
+ 7. Use the same program. But change the main method to get & print 10 user details.  
+ 8. Use the abv program but instead of 10 users , it should be infinte time. stop the program only if user type "exit" 
+
+  
+
+FILE Handling
+=============
+
+Data Base
+==========
+
+

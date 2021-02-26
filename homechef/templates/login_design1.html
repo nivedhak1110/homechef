@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> login </title>
+
+
+<style type="text/css">
+    body {
+        background:url(https://media.gettyimages.com/photos/cooking-backgrounds-fresh-vegetables-and-kitchen-utensils-frame-picture-id1124754345?s=2048x2048);
+        background-size: cover;
+        font-family: 'Ubuntu', sans-serif;
+       
+    	}
+    .main {
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 400px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    	}
+     
+    .homechef {
+        padding-top: 40px;
+        color: #DC143C;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    	}
+
+    .ID {
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+
+    
+    
+
+    
+    .ID:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+        
+    	}
+
+
+    .submit {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #FFA07A, #DC143C);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 35%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        
+
+   	  }
+ 
+     .forgot {
+
+        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+        color: #C0C0C0;
+        padding-top: 15px;
+    	}
+    
+        a {
+         text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+         color: #C0C0C0;
+         text-decoration: none
+    	}
+         
+
+        
+        @media (max-width: 600px) {
+
+        .main {
+            border-radius: 0px;
+        }
+        
+</style>
+    
+     
+
+
+
+</head>
+<body>
+
+
+    <form>
+
+  <div class="main">
+
+  <p class="homechef" align="center" >Home Chef</p>
+  
+  <input  class="ID"  type="email" id="ID" name="ID" placeholder="Email ID"    >
+  <input  class="ID" type="password" id="password" name="password" placeholder="Password"  >
+
+
+  <button  class="submit" id="login"  type="submit" formaction="/logincheck" formmethod="post" >Login</button>
+  <p class="forgot" align="center"><a href="#">Forgot Password?</p>
+  <button class="submit"   type="submit" formaction="/signup" formmethod="post"  >Signup</button>
+  
+    </form>
+
+  </div>
+
+</body>
+</html>

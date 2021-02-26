@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUP</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+                    var username_state = false;
+                    $('#username').on('blur', function(){
+                        var username = $('#username').val();
+
+
+                        var url = "http://localhost:5000/usernamecheck"
+                        if (username == '') {
+                                username_state = false;
+                                return;
+                        }
+                        $.ajax({
+                            url: url,
+                            type: 'post',
+                            data: {
+                                'username' : username,
+                            },
+
+                            success: function(response){
+                                status = response.status;
+
+                              if (status == 'taken' ) {
+                                username_state = false;
+                                alert("Sorry... Username already taken! enter new username");
+                              }
+                              else if (status == 'not_taken') {
+                                username_state = true;
+                                alert("user name ok !");
+                              }
+                            }
+                        });
+                    });
+
+
+                    $('#signup').on('click', function(){
+                            var name = $('#name').val();
+                            var username = $('#username').val();
+                            var email = $('#email').val();
+                            var password = $('#password').val();
+                            var category = $('#category').val();
+                            var address = $('#add').val();
+                            var url = "http://localhost:5000/signupsave"
+                            if (username_state == false ) {
+                                    alert('Fix the  errors in the form first');
+
+                            }
+                            else{
+                              // proceed with form submission
+                                  $.ajax({
+                                            url: url,
+                                            type: 'post',
+                                            data: {
+
+                                                'name' : name,
+                                                'username' : username,
+                                                'email' : email,
+                                                'password' : password,
+                                                'category' : category,
+                                                'address' : address,
+
+                                            },
+                                            success: function(response) {
+                                                    status = response.status;
+                                                    alert(status);
+                                                    if (status == 'success' ) {
+                                                        alert('user saved');
+                                                        window.location.replace('/login');
+                                                    }
+                                                    else if (status == 'failed') {
+                                                        alert('unable to save user');
+                                                        window.location.replace('/signup');
+                                                    }
+
+
+                                            }
+
+
+                                });
+
+
+                            }
+                    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+
+
+    <style type="text/css">
+    body {
+        background:url(https://media.gettyimages.com/photos/flat-lay-colourful-vegan-food-slice-in-antique-metal-spoon-still-life-picture-id851999772?s=2048x2048);
+        background-size: cover;
+        font-family: 'Ubuntu', sans-serif;
+    	}
+    .main {
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 700px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    	}
+     
+    .details {
+        padding-top: 40px;
+        color: #DC143C;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    	}
+
+    .UD {
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+
+
+    
+    .ID:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+        
+    	}
+
+
+    .submit {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #FFA07A, #DC143C);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 35%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        
+
+   	  }
+ 
+    @media (max-width: 600px) {
+
+    .main {
+        border-radius: 0px;
+    }
+
+
+        
+    </style>    
+    
+
+      
+
+
+
+</head>
+<body>
+  
+
+  <form>
+
+
+
+
+  <div class="main">
+
+
+  <p class="details" align="center">Register Your details</p>
+
+  <input  class="UD" type="text" id="name" name="name" placeholder="Name" required >
+
+  <input  class="UD" type="text" id="username" name="username" placeholder="user ID" required >
+
+  <input class="UD" type="email" id="email" name="email" placeholder="Email ID"  required  >
+
+  <input class="UD" type="password" id="password" name="password" placeholder="Password" required ><br>
+
+      <select  class="UD" name="category" id="category" style="text-indent: 95px;"  >
+
+        <option value="customer">customer</option>
+        <option value="homechef">homechef</option>
+      </select>
+
+  <input class="UD" type="text" id="add" name="add" placeholder="Address" required  >
+          <input class="submit" type="reset"><br><br>
+  <button  class="submit" type="submit" id = "signup" >Signup</button>
+  </div>
+  </form>
+    
+
+
+
+</body>
+</html>

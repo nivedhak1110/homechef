@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title> homechef </title>
+    <style type="text/css">
+    body {
+        background:url(https://media.gettyimages.com/photos/this-smells-so-delicious-picture-id1082202128?s=2048x2048);
+        background-position: center;
+		background-size: cover;
+
+        font-family: 'Ubuntu', sans-serif;
+
+    	}
+    .main {
+        background-color: #FFFFFF;
+        width: 400px;
+        height: 850px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    	}
+
+    .check_orders
+    	{
+    	background-color: #FFFFFF;
+        width: 400px;
+        height:150px;
+        margin: 7em auto;
+        border-radius: 1.5em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+
+    	}
+
+    .Details {
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+
+
+
+
+
+    .ID:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+
+    	}
+
+
+   .homechef {
+        padding-top: 40px;
+        color: #DC143C;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    	}
+
+
+
+     .submit {
+      cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #FFA07A, #DC143C);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 35%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+     @media (max-width: 600px) {
+
+        .main {
+            border-radius: 0px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<form>
+	<div class="main">
+        <p class="homechef" align="center" >Welcome HomeChef!</p>
+
+	<input class="Details" type="text" id="user_ID" name="user_ID"  placeholder="Enter your user ID"  required>
+
+	<input class="Details" type="text" id="chef" name="chef" placeholder="chef name"  required>
+
+	<input class="Details" type="date" id="date" name="date" placeholder="Date"  required>
+
+	<input class="Details" type="text" id="dish" name="dish" placeholder="Dish"  required >
+
+	<input class="Details" type="number" id="cost" name="cost" placeholder="Cost" required  >
+
+	<input class="Details" type="number" id="available" name="available" placeholder="Availability"  required>
+
+	<input class="Details" type="text" id="location" name="location" placeholder="Location"  required >
+
+	<input class="Details" type="text" id="contact" name="contact" placeholder="contact"  required >
+
+	<button class="submit"  id="add_dish" type="submit" formaction="/add_dish" formmethod="post" > Add dish+ </button> <br><br>
+
+	<button class="submit"  id="submit" type="submit" formaction="/homechef_save" formmethod="post"> Submit</button>  <br><br>
+
+	</div>
+
+
+</form>
+
+<form>
+	<div class = "check_orders">
+		<p class="homechef" align="center" >click to check orders received </p>
+		<button class="submit"  id="check_orders" type="submit" formaction="/check_orders" formmethod="post"> orders </button>
+	</div>
+
+	<div class = "check_orders">
+		<p class="homechef" align="center" > click to login as customer </p>
+		<button class="submit"  id="login_as_ customer" type="submit" formaction="/restclient" formmethod="post">  login </button>
+	</div>
+</form>
+
+
+
+
+
+</body>
+
+</html>

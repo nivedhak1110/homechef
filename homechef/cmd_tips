@@ -1,0 +1,32 @@
+Only commands
+==========================================
+build the image:
+-----------------
+docker build --network=host  -t myhomechef .
+
+open other gitbash & run mysql image:
+------------------------------------------
+docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql
+
+(Incase you dont want logs to be printed, you can use docker run --detach --name=test-mysql --env="MYSQL_ROOT_PASSWORD=mypassword" mysql )
+
+
+volume bind:
+ docker run --name=test-mysql   -v myhomechef-project:/var/lib/mysql --env="MYSQL_ROOT_PASSWORD=mypassword" -d mysql:latest
+
+
+
+run myhomechef image:
+--------------------
+ docker run -p 5000:5000 --name myhomechef --link test-mysql:mysql  myhomechef
+(link is used to connect with mysql container)
+
+Other old commands 
+==========================================
+docker build --network=host  -t homechef .
+docker image ls
+docker run -p 5000:5000 --name myhomechef  homechef
+docker ps
+docker stop myhomechef
+docker rm myhomechef 
+docker rm myhomechef

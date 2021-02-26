@@ -1,0 +1,16 @@
+1. what do you know about docker? why should we use docker?
+	
+	Docker --> technology using which we can make our application run anywhere anytime.
+	using the url of application that we created by building a docker image of the application.
+
+2. what problems were faced without docker?
+
+	we had challenges in running our application using pycharm each time ,inspite of correcting all the errors.
+	module not found  compile time errrors,errors related to python interpretor  occured more often.
+
+3. what problems occured during docker installation?
+
+	my windows 10 home pc --> lower version
+	so,docker tool box was only suitable.
+	earlier, virtualization was disabled in my pc
+	we had to enable virtualiztion.

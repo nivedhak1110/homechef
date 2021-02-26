@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+                    $(".back").hide(10);
+                    $("#chefName").hide(1000);
+                    $("#dishname").hide(1000);
+                    $("#price").hide(1000);
+                    $("#availability").hide(1000);
+                    $("#quantity").hide(1000);
+                    $("#customer").hide(1000);
+                    $("#address").hide(1000);
+                    $("#contact").hide(1000);
+                    $("#customer_contact").hide(1000);
+                    $(".order").hide(1000);
+
+                  $.getJSON("http://localhost:5000/test", function(result){
+                    var data = result.name;
+                    for (var i = 0; i < result.name.length ; i++) {
+
+                    var buttons = $('<button class="button"  data-value="'+ data[i] +'" > '+ data[i] + ' </button>' + '<br>'+ '<br>')
+
+                    buttons.appendTo('#ID');
+
+
+                    }
+
+                            $('.button').click(function(e) {
+                                        $("#heading").hide(10);
+                                        $("#ID").hide(1000);
+                                        $(".back").show(1000);
+
+                                        var name = $(this).data('value');
+
+                                        var url = "http://localhost:5000/get/dishname/"+ name
+
+                                        $.getJSON(url, function(result){
+
+
+                                                var dish_names = result.dishnames
+
+
+                                                for (var i = 0; i < result.dishnames.length ; i++) {
+
+                                                        var dishbuttons = $('<button class="dishbutton"  data-dish="'+ dish_names[i] +'" > '+ dish_names[i] + ' </button>' + '<br>'+ '<br>')
+                                                         dishbuttons.appendTo('#dishnames');
+
+                                                }
+
+                                                $('.dishbutton').click(function(e) {
+                                                         var chef_ID = result.chef_ID
+                                                         var dishname = $(this).data('dish');
+                                                         var dish_url = "http://localhost:5000/dishdetails"
+                                                         var myJSON = {
+                                                                'chef_ID': chef_ID ,
+                                                                'dish': dishname
+                                                         }
+                                                         var dish_details = JSON.stringify( myJSON)
+
+                                                         $.post( dish_url, dish_details , function(response){
+                                                               var chef_ID = response.chef_ID
+                                                               var chefname = response.chef_name
+                                                               var dishname = response.dish
+                                                               var price =  " Price "+ response.cost
+                                                               var availability =  " Availability "+ response.availability
+                                                               var contact = response.contact
+                                                               var quantity = $("#quantity");
+                                                               var customer = $("#customer");
+                                                               var address =  $("#address");
+                                                               var customer_contact = $("#customer_contact");
+
+
+                                                               $("#dishnames").hide(1000);
+                                                               $("#chef_ID").append(chef_ID ).show(1000);
+                                                               $("#chefName").append(chefname ).show(1000);
+                                                               $("#contact").append("Chef Contact "+ contact ).show(1000);
+                                                               $("#dishname").append(dishname).show(1000);
+                                                               $("#price").append(price).show(1000);
+                                                               $("#availability").append(availability).show(1000);
+                                                               $("#customer").append(customer).show(1000);
+                                                               $("#address").append(address).show(1000);
+                                                               $("#customer_contact").append(customer_contact).show(1000);
+                                                               $("#quantity").append(quantity).show(1000);
+
+
+                                                               var ordername = "Order!"
+                                                               var order = $('<button class="order"  data-value='+ chefname +' >'+ ordername  +'</button>' + '<br>'+ '<br>')
+                                                               order.appendTo('#order');
+                                                               $('.order').click(function(e , dishname) {
+                                                                        var chef_ID = $("#chef_ID").text()
+                                                                        var chef_name = $("#chefName").text()
+                                                                        var dish_name = $("#dishname").text()
+                                                                        var  order_quantity = $("#quantity").val()
+                                                                        var customer_name = $("#customer").val()
+                                                                        var  order_address = $("#address").val()
+                                                                        var customer_contact = $("#customer_contact").val()
+
+
+
+
+                                                                        var order_details = {
+                                                                                       'chef_ID':chef_ID,
+                                                                                       'chef_name': chef_name ,
+                                                                                       'order_quantity': order_quantity,
+                                                                                       'dish':  dish_name ,
+                                                                                       'customer_name' : customer_name,
+                                                                                       'address' : order_address,
+                                                                                       'customer_contact' : customer_contact
+                                                                                     }
+                                                                        var myJSON = JSON.stringify(order_details);
+
+
+                                                                        var order_url = "http://localhost:5000/order"
+
+                                                                        $.post(order_url , myJSON , function(result){
+                                                                           $("#chefName").hide(1000);
+                                                                           $("#contact").hide(1000);
+                                                                           $("#dishname").hide(1000);
+                                                                           $("#price").hide(1000);
+                                                                           $("#availability").hide(1000);
+                                                                           $("#quantity").hide(1000);
+                                                                           $("#customer").hide(1000);
+                                                                           $("#address").hide(1000);
+                                                                           $("#customer_contact").hide(1000);
+
+                                                                           $(".order").hide(1000);
+                                                                           alert("Your Order placed !");
+                                                                           window.location.replace('/restclient');
+
+
+                                                                        });
+
+
+
+
+
+                                                                });
+
+
+                                                         });
+
+
+
+
+
+
+                                                 });
+
+
+
+
+
+                                        });
+
+
+
+
+
+
+
+
+
+                            });
+
+                  });
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+<style>
+body {
+        background:url("https://image.freepik.com/free-photo/young-pretty-woman-eating-pizza-pizza-bar_1303-20334.jpg");
+
+        font-family: 'Ubuntu', sans-serif;
+
+        }
+
+div.chef {
+  width: 70%;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+div.container {
+  padding: 10px;
+}
+.heading {
+        padding-top: 40px;
+        color: #DC143C;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    	}
+ .button {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #FFA07A, #DC143C);
+        border: 0;
+        width:200px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        }
+ .dishbutton{
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #FFA07A, #DC143C);
+        border: 0;
+        width:200px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+ }
+ .order{
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #FFA07A, #DC143C);
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        }
+
+ .details{
+    width: 20%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+ a {
+   text-decoration: none;
+   display: inline-block;
+   padding: 20px;
+   font-size: 35px;
+   width: 40px;
+   text-align: center;
+}
+  .back:hover {
+   background-color: #ddd;
+   color: black;
+   }
+
+.back {
+   border-radius: 50%;
+   background-color: #acacac;
+   color: black;
+   }
+
+</style>
+
+
+
+
+</head>
+<body>
+<form>
+<center>
+<div align="center" class="chef" id="chef">
+
+        <a href="http://localhost:5000/restclient" class="back">‹</a>
+        <div class="container">
+            <p class="heading" id="heading" align="center" > click on your favourite chef ID! </p>
+            <p id="ID"></p>
+            <p id = "dishnames"></p>
+        </div>
+
+        <center>
+        <p class="details" id="chef_ID"></p>
+        <p class="details" id="chefName"></p>
+        <p class="details" id="contact"></p>
+        <p class="details" id ="dishname" ></p>
+        <p class="details" id ="price"></p>
+        <p class="details" id ="availability"></p>
+        <input  class = "details"   id="customer" placeholder="Enter your name"  required  > </input>
+        <input  class = "details"   id="address" placeholder="Enter address"  required  > </input>
+        <input  class = "details"   id="customer_contact" placeholder="contact number"  required  > </input>
+        <input  class = "details" type="number"  id="quantity" placeholder="Enter Quantity"  required  > </input>
+        <p id="order"></p>
+        <p class ="response" style="font-family: 'Ubuntu', sans-serif;"></p>
+        </center>
+</div>
+</center>
+</form>
+
+
+</body>
+</html>
