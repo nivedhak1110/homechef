@@ -1,4 +1,4 @@
-Gunicorn==20.0.4
+
 Flask
 flask_api
 requests
