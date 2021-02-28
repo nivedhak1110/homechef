@@ -30,3 +30,11 @@ docker ps
 docker stop myhomechef
 docker rm myhomechef 
 docker rm myhomechef
+==================================
+docker hub push
+docker tag <currentimage:version>. <userid/imagename:version>
+docker run -p 5000:5000 --name dockermagic nivedha1104/homechef:latest
+docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD="root"  --name mysql-test  mysql
+docker image ls
+docker push imagename
+so u r pushing docker image to dockerhub
