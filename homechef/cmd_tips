@@ -30,6 +30,7 @@ docker ps
 docker stop myhomechef
 docker rm myhomechef 
 docker rm myhomechef
+docker exec-it test-mysql bash
 ==================================
 docker hub push
 docker tag <currentimage:version>. <userid/imagename:version>
