@@ -42,6 +42,7 @@ This application provides the functionality for customers supply necessary detai
 
 # Implementation:
 Software interface
+
 •	Framework:FLASK
 
 
