@@ -6,7 +6,7 @@ This application provides the functionality for customers supply necessary detai
 
 
 
-# HOMECHEF
+# Home chef
 
 
  • Create an account. 
@@ -23,7 +23,7 @@ This application provides the functionality for customers supply necessary detai
  
  •check the orders that placed.
  
- # CUSTOMER
+ # Customer
  
  
  • Create an account.  
